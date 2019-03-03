@@ -230,3 +230,10 @@ a {
     margin: 5px;
   }
 }
+
+  .throw404 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	}
