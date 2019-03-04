@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import {getPlayers} from '../api'
 import {parse} from 'query-string'
 import slug from 'slug'
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 export default class Players extends Component {
 	state = {
@@ -33,6 +34,7 @@ export default class Players extends Component {
 		const {match, location} = this.props
 
 		return (
+			
 			<div className='container two-column'>
 				<Sidebar
 				  	title='Players'
@@ -53,32 +55,36 @@ export default class Players extends Component {
 			  		} = players.find( (player) => slug(player.name) === match.params.playerId)
 			  		
 					return (
-						<div className='panel'>
-							<img className='avatar' src={`${avatar}`} alt={`${name}'s avatar`} />
-							<h1 className='medium-header'>{name}</h1>
-							<h3 className='header'>#{number}</h3>
-							<div className='row'>
-								<ul className='info-list' style={{marginRight: 80}}>
-									<li>Team
-										<div>
-											<Link style={{color: '#68809a'}} to={`/${teamId}`}>
-												{teamId[0].toUpperCase() + teamId.slice(1)}
-											</Link>
-										</div>
-									</li>
-									<li>Position<div>{position}</div></li>
-									<li>PPG<div>{ppg}</div></li>
-								</ul>
-								<ul className='info-list'>
-									<li>APG<div>{apg}</div></li>
-									<li>RPG<div>{rpg}</div></li>
-									<li>SPG<div>{spg}</div></li>
-								</ul>
-							</div>
-						</div>
+						<TransitionGroup className='panel'>
+							<CSSTransition key={location.key} timeout={800} classNames='fade'>
+								<div className='panel'>
+									<img className='avatar' src={`${avatar}`} alt={`${name}'s avatar`} />
+									<h1 className='medium-header'>{name}</h1>
+									<h3 className='header'>#{number}</h3>
+									<div className='row'>
+										<ul className='info-list' style={{marginRight: 80}}>
+											<li>Team
+												<div>
+													<Link style={{color: '#68809a'}} to={`/${teamId}`}>
+														{teamId[0].toUpperCase() + teamId.slice(1)}
+													</Link>
+												</div>
+											</li>
+											<li>Position<div>{position}</div></li>
+											<li>PPG<div>{ppg}</div></li>
+										</ul>
+										<ul className='info-list'>
+											<li>APG<div>{apg}</div></li>
+											<li>RPG<div>{rpg}</div></li>
+											<li>SPG<div>{spg}</div></li>
+										</ul>
+									</div>
+								</div>
+							</CSSTransition>
+						</TransitionGroup>
 					)
 				}} />
-			</div>
+			</div>		
 		)
 	}
 }

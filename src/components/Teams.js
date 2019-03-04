@@ -4,6 +4,7 @@ import {getTeamNames} from '../api'
 import TeamLogo from './TeamLogo'
 import Team from './Team'
 import {Route, Link} from 'react-router-dom'
+import Loading from './Loading'
 
 
 export default class Teams extends React.Component {
@@ -46,7 +47,7 @@ export default class Teams extends React.Component {
 						<div className='panel'>
 							<Team id={match.params.teamId}>
 								{(team) => team === null
-									? <h1>Loading...</h1>
+									? <Loading/>
 									: <div style={{width: '100%'}}>
 										<TeamLogo id={team.id} className='center' />
 									 	<div className='medium-header'>{team.name}</div>

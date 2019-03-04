@@ -86,6 +86,20 @@ a {
   margin: 0 auto;
 }
 
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 800ms ease-in;
+}
+
+.fade-exit {
+  display: none;
+}
+
 .avatar {
   width: 200px;
   border-radius: 100px;
