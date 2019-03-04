@@ -25,6 +25,7 @@ export default function Sidebar ({title, list, loading, location, match}) {
 		if (loading === true) {
 			return <div>Loading...</div>
 		}
+
 		return (
 			<div>
 				<h3 className='header'>{title}</h3>
