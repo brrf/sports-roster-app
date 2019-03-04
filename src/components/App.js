@@ -5,6 +5,7 @@ import Home from './Home'
 import Players from './Players'
 import Teams from './Teams'
 import TeamPage from './TeamPage'
+import Articles from './Articles'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
 	      		<Route path ='/players' component={Players} />
 	      		<Route path ='/teams' component={Teams} />
 	      		<Route path ='/:teamId' exact component={TeamPage} />
+	      		<Route path='/:teamId/articles' component={Articles} />
 	      		<Route render={() => (
 	      			<div>
 		      			<h1 className='throw404'>I'm throwing you a 404</h1>
